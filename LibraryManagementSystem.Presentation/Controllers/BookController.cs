@@ -1,4 +1,5 @@
-﻿using LibraryManagementSystem.Application.Interfaces;
+﻿using AutoMapper;
+using LibraryManagementSystem.Application.Interfaces;
 using LibraryManagementSystem.Presentation.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,23 +9,19 @@ namespace LibraryManagementSystem.Presentation.Controllers
     public class BookController : Controller
     {
         IBookService _bookService;
+        IMapper _mapper;
 
-        public BookController(IBookService bookService)
+        public BookController(IBookService bookService, IMapper mapper)
         {
             _bookService = bookService;
+            _mapper = mapper;
         }
+
         // GET: BookController
         public ActionResult Index()
         {
             var books = _bookService.GetBooks();
-
-            //use automapper instead
-            var result = new List<BookViewModel>();
-
-            foreach (var book in books)
-            {
-                result.Add(new BookViewModel() { Title = book.Title, ImageURL = book.ImageURL });
-            }
+            var result = _mapper.Map<List<BookViewModel>>(books);
 
             return View(result);
         }
