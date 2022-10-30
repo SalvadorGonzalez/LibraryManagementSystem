@@ -1,7 +1,13 @@
+using LibraryManagementSystem.Application.Interfaces;
+using LibraryManagementSystem.Application.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Dependency Injection IOC
+builder.Services.AddTransient<IBookService, BookService>();
 
 var app = builder.Build();
 
