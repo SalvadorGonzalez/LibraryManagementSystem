@@ -1,5 +1,7 @@
 using LibraryManagementSystem.Application.Interfaces;
 using LibraryManagementSystem.Application.Services;
+using LibraryManagementSystem.Infrastructure;
+using LibraryManagementSystem.Infrastructure.Clients;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //Dependency Injection IOC
 builder.Services.AddTransient<IBookService, BookService>();
+builder.Services.AddTransient<IBookApi, BookApiClient>();
 
 var app = builder.Build();
 

@@ -18,9 +18,9 @@ namespace LibraryManagementSystem.Presentation.Controllers
         }
 
         // GET: BookController
-        public ActionResult Index()
+        public async Task<ActionResult> IndexAsync()
         {
-            var books = _bookService.GetBooks();
+            var books = await _bookService.GetBooksAsync();
             var result = _mapper.Map<List<BookViewModel>>(books);
 
             return View(result);
@@ -45,7 +45,7 @@ namespace LibraryManagementSystem.Presentation.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
             catch
             {
@@ -66,7 +66,7 @@ namespace LibraryManagementSystem.Presentation.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
             catch
             {
@@ -87,7 +87,7 @@ namespace LibraryManagementSystem.Presentation.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
             catch
             {

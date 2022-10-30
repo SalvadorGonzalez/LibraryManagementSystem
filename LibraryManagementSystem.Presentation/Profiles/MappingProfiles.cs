@@ -9,6 +9,7 @@ namespace LibraryManagementSystem.Presentation.Profiles
         public MappingProfiles()
         {
             CreateMap<BookModel, BookViewModel>();
+            CreateMap<BookModel, BookModel>();
         }
     }
 }

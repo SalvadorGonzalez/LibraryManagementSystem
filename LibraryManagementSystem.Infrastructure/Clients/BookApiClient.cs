@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Infrastructure.Clients
 {
-    internal class BookApiClient : IBookApi
+    public class BookApiClient : IBookApi
     {
         ApiCaller<object> api = new ApiCaller<object>();
 

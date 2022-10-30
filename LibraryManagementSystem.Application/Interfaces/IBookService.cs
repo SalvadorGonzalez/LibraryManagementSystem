@@ -9,6 +9,6 @@ namespace LibraryManagementSystem.Application.Interfaces
 {
     public interface IBookService
     {
-        List<BookModel> GetBooks();
+        Task<List<BookModel>> GetBooksAsync();
     }
 }
